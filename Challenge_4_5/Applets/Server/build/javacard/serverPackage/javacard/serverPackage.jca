@@ -1,0 +1,228 @@
+// converted by version  [v25.0]
+// on Sun Jun 29 23:40:50 CEST 2025
+
+.package serverPackage {
+	.aid 0x55:0x55:0x55:0x55:0x55;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+	}
+
+	.applet {
+		0x55:0x55:0x55:0x55:0x55:0x1 ServerApplet;
+	}
+
+	.constantPool {
+		// 0
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 1
+		staticFieldRef byte[] ServerApplet/state_nvm;
+		// 2
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 3
+		staticFieldRef byte[] ServerApplet/state_ram;
+		// 4
+		.classRef ServerApplet;
+		// 5
+		staticMethodRef ServerApplet/<init>()V;
+		// 6
+		virtualMethodRef 1.3.2([BSB)V;		// register([BSB)V
+		// 7
+		staticMethodRef 1.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 8
+		staticMethodRef ServerApplet/bar(SSS)V;
+		// 9
+		staticMethodRef 1.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 10
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+	}
+
+	.interface public abstract SimpleSI 0 {
+
+		.shareable;
+
+		.superInterfaces {
+			1.2;		// javacard/framework/Shareable
+		}
+
+		.method public abstract foo(SSS)V 0 {
+		}
+
+	}
+
+	.class public ServerApplet 1 extends 1.3 {		// extends javacard/framework/Applet
+
+		.shareable;
+
+		.fields {
+			private static byte[] state_nvm;		// [B
+			private static byte[] state_ram;		// [B
+		}
+
+		.publicMethodTable 5 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+			foo(SSS)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 1.2 { 		// javacard/framework/Shareable
+			}
+
+			.interface SimpleSI { 
+				8;		// foo(SSS)V
+			}
+
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 0;		// javacard/framework/Applet.<init>()V
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	sconst_1;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_0;
+					bastore;
+					putstatic_a 1;		// reference serverPackage/ServerApplet.state_nvm
+					sconst_1;
+					sconst_1;
+					invokestatic 2;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 3;		// reference serverPackage/ServerApplet.state_ram
+					new 4;		// serverPackage/ServerApplet
+					dup;
+					invokespecial 5;		// serverPackage/ServerApplet.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 6;		// register([BSB)V
+					return;
+		}
+
+		.method public getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable; 5 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+
+				L0:	aload_0;
+					areturn;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 0;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	return;
+		}
+
+		.method public foo(SSS)V 8 {
+			.stack 4;
+			.locals 0;
+
+				L0:	invokestatic 7;		// javacard/framework/JCSystem.beginTransaction()V
+					getstatic_a 1;		// reference serverPackage/ServerApplet.state_nvm
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					getstatic_a 3;		// reference serverPackage/ServerApplet.state_ram
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					invokespecial 8;		// serverPackage/ServerApplet.bar(SSS)V
+					getstatic_a 3;		// reference serverPackage/ServerApplet.state_ram
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					ssub;
+					s2b;
+					bastore;
+					getstatic_a 1;		// reference serverPackage/ServerApplet.state_nvm
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					ssub;
+					s2b;
+					bastore;
+					invokestatic 9;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method private bar(SSS)V {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 1;		// reference serverPackage/ServerApplet.state_nvm
+					sconst_0;
+					baload;
+					sconst_1;
+					if_scmple L3;
+				L1:	getstatic_a 3;		// reference serverPackage/ServerApplet.state_ram
+					sconst_0;
+					baload;
+					sconst_1;
+					if_scmple L3;
+				L2:	sload_1;
+					invokestatic 10;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	getstatic_a 1;		// reference serverPackage/ServerApplet.state_nvm
+					sconst_0;
+					baload;
+					sconst_1;
+					if_scmple L5;
+				L4:	sload_2;
+					invokestatic 10;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	getstatic_a 3;		// reference serverPackage/ServerApplet.state_ram
+					sconst_0;
+					baload;
+					sconst_1;
+					if_scmple L7;
+				L6:	sload_3;
+					invokestatic 10;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	return;
+		}
+
+	}
+
+}
